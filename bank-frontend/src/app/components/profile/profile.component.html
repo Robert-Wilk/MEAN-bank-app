@@ -1,0 +1,20 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <header class="jumbotron">
+    <h3>
+      <strong>Profile Settings</strong>
+    </h3>
+  </header>
+  <p>
+    <strong>Email:</strong>
+    {{ currentUser.email }}
+  </p>
+  <strong>Options:</strong>
+  <ul>
+    <!-- TODO: Implement these functions later as drop down menus or seperate components-->
+    <li><a role="button" class="btn btn-link" href="#">Change Password</a></li>
+    <li><a role="button" class="btn btn-link" href="#">Change Email</a></li>
+    <li><a role="button" class="btn btn-link" href="#">Edit Username</a></li>
+    <li><a role="button" class="btn btn-link" href="#">Delete Account</a></li>
+  </ul>
+</div>
+<ng-template #loggedOut> Please login in. </ng-template>

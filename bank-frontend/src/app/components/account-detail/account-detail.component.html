@@ -1,0 +1,62 @@
+<header class="jumbotron">
+    <h2 class="text-center">{{ userAccount.accountType }} Account Information</h2>
+    <p class="text-center">Member Since: {{ userAccount.createdAt[1] }} / {{ userAccount.createdAt[2] }} / {{ userAccount.createdAt[0] }}</p>
+    <div class="row text-center mt-5">
+        <div class="col-sm">
+            Account Number: {{ userAccount.accountNumber }}
+        </div>
+        <div class="col-sm">
+            Routing Number: 930126805
+        </div>
+    </div>
+</header>
+<h2>Balance: ${{ userAccount.amount}}</h2>
+<!-- TODO: Work on formatting for different screensizes -->
+<!-- TODO: Make formatting of links nicer -->
+<h2>Transaction History:</h2>
+<table class="table table-hover" *ngIf="transactions.length > 0; else noTransactions">
+  <thead>
+    <tr>
+      <th scope="col">Transaction Id:</th>
+      <th scope="col">Type:</th>
+      <th scope="col">Amount:</th>
+      <th scope="col">Date:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactionsToShow; let i = index">
+      <th scope="row" data-toggle="modal" data-target="#exampleModalCenter" (click)="logTransaction(i)">
+          {{ transaction._id.substring(0, 3) }}...{{ transaction._id.substring( transaction._id.length - 3, transaction._id.length) }}
+      </th>
+      <td data-toggle="modal" data-target="#exampleModalCenter">{{ transaction.transactionType }}</td>
+      <td data-toggle="modal" data-target="#exampleModalCenter">{{ transaction.amount }}</td>
+      <td data-toggle="modal" data-target="#exampleModalCenter">{{ transaction.date }}</td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-primary btn-block mx-auto" style="width: 200px;" (click)="loadMore()">View More</button>
+<!-- MODAL -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Transaction Details:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><u>Transaction id:</u> {{ transactions[index]._id }}</p>
+        <p><u>Date:</u> {{ transactions[index].date }}</p>
+        <p><u>Transaction Type:</u> {{ transactions[index].transactionType }}</p>
+        <p><u>Amount:</u> {{ transactions[index].amount }}</p>
+        <p><u>Description:</u></p>
+        <p>{{ transactions[index].description }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noTransactions>No transactions for this account</ng-template>

@@ -1,6 +1,8 @@
 # MEAN Bank app
 Hello everyone! This is a project I have been working on since February 2022. Through this project, I have learned about MongoDB, Express.js, Angular, and NodeJs. I have also improved my JavaScript and TypeScript skills from working on this project.
 
+Shout-out to [bezkoder's](https://www.bezkoder.com/) amazing tutorials for MongoDB, Express, and Angular. These tutorials helped me a lot in understanding how implement the MEAN stack and just general good practices.
+
 ## About:
 MEAN Bank app (aka Angle Financial) is a banking application that is modeled after the typical banking application. When a user first reaches the site, they are greated with the global home page. From the home page, the user can login/signup for an account. Inside the account portal, users can browse/create accounts, view transactions for accounts, and make edits to their information (email, username, password, etc.).
 
